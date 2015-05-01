@@ -14,7 +14,8 @@
     "dependencies": {
       "handlebars": "github:components/handlebars.js@^3.0.3",
       "jquery": "github:components/jquery@^2.1.3",
-      "necolas/normalize.css": "github:necolas/normalize.css@^3.0.3"
+      "necolas/normalize.css": "github:necolas/normalize.css@^3.0.3",
+      "normalize.css": "github:necolas/normalize.css@^3.0.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.0.12",
