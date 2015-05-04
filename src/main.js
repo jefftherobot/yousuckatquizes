@@ -5,9 +5,12 @@ import Quiz from './controllers/quiz';
 class YouSuckAtQuizes {
 
 	constructor () {
-		console.log('You suck!') //TODO: http://patorjk.com/software/taag/#p=testall&f=Star%20Wars&t=You%20suck
+		//console.log('You suck!') //TODO: http://patorjk.com/software/taag/#p=testall&f=Star%20Wars&t=You%20suck
 
-		new Quiz({title: 'You suck at quizes'})
+		this.quiz = new Quiz({title: 'You suck at quizes'});
+
+		//Bind quiz data to HTML
+		rivets.bind($('#quiz'), {quiz : this.quiz})
 	}
 }
 new YouSuckAtQuizes();
