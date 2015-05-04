@@ -10,6 +10,8 @@ System.config({
   "map": {
     "handlebars": "github:components/handlebars.js@3.0.3",
     "jquery": "github:components/jquery@2.1.3",
+    "rivets": "github:mikeric/rivets@0.8.1",
+    "sightglass": "github:mikeric/sightglass@0.2.4",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",

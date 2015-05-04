@@ -1,9 +1,14 @@
 <!doctype html>
 <html>
   <head>
-  <link rel="stylesheet" type="text/css" href="/dist/app.css">
+  <link rel="stylesheet" type="text/css" href="/dist/main.css">
   </head>
   <body aurelia-app>
+    <main>
+      <section id="quiz">
+        <h1></h1>
+      </section>
+    </main>
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>
@@ -14,7 +19,7 @@
      });
    </script>
     <script>
-      System.import('app');
+      System.import('main');
     </script>
   </body>
 </html>

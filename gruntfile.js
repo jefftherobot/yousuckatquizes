@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 					require: ['sass-globbing', 'sass-css-importer']
 				},
 				files: {
-					'dist/app.css': 'src/app.scss'
+					'dist/main.css': 'src/main.scss'
 				}
 			}
 		},

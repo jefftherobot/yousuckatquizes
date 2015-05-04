@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/models/question.js"],"names":[],"mappings":";KAAM,QAAQ;;;;;;;;;AAAR,WAAQ,GAED,SAFP,QAAQ,CAEA,IAAI,EAAE;0BAFd,QAAQ;;AAGZ,QAAI,CAAC,EAAE,GAAG,IAAI,CAAC,EAAE,CAAC;IAClB;;sBAGa,QAAQ","file":"src/models/question.js","sourcesContent":["class Question {\r\n\r\n\tconstructor (args) {\r\n\t\tthis.id = args.id;\r\n\t}\r\n}\r\n\r\nexport default Question;"]}
