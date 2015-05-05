@@ -1,22 +1,35 @@
+import $ from 'jquery';
+import rivets from 'rivets';
 import QuestionsFactory from '../services/questions';
+import Question from '../models/question';
 
 class Quiz {
 
 	constructor (args) {
 		this.title = args.title;
+		this.question;
+		this.selectedChoice;
+		this.message;
+
+		this.startQuiz();
 	}
 
-	startQuiz(){};
+	startQuiz(){
+		this.setQuestion(0)
+	}
 
-	getQuestion(id){
-		console.log(QuestionsFactory.questions[id])
-	};
+	setQuestion(id){
+		var questionData = QuestionsFactory.questions[id];
+		this.question = new Question({question: questionData.question, choices: questionData.choices, correctAnswer: questionData.answer});
+	}
 
-	checkAnswer(){};
+	checkAnswer(event, s){
+		var selectedChoice = s.scope.selectedChoice,
+		    question = s.scope.question;
 
-	isOver(){};
+		s.scope.message = (selectedChoice == question.correctAnswer) ? "you don't suck." : "you suck";
+	}
 
-	getResult(){};
 }
 
 export default Quiz;

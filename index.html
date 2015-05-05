@@ -1,25 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-  <link rel="stylesheet" type="text/css" href="/dist/main.css">
-  </head>
-  <body aurelia-app>
-    <main>
-      <section id="quiz">
-        <h1>{ quiz.title }</h1>
-      </section>
-    </main>
-    <script src="jspm_packages/system.js"></script>
-    <script src="config.js"></script>
-    <script>
-     System.config({
-       "paths": {
-         "*": "dist/*.js"
-       }
-     });
-   </script>
-    <script>
-      System.import('main');
-    </script>
-  </body>
+	<head>
+	<link rel="stylesheet" type="text/css" href="/dist/main.css">
+	</head>
+	<body>
+
+		<main>
+			<section id="quiz">
+				<!-- <h1 rv-text="scope.title"></h1> -->
+				<div class="quiz__question" rv-text="scope.question.question"></div>
+				<ul class="quiz__choices">
+					<li rv-each-choice="scope.question.choices" class="quiz__choices__item">
+						<input type="radio" name="choice" rv-checked="scope.selectedChoice" rv-value="index" rv-on-click="scope.checkAnswer"> <label rv-text="choice"></label>
+					</li>
+				</ul>
+				<div rv-show="scope.selectedChoice"> You chose index {scope.selectedChoice}</div>
+				<div rv-text="scope.message"></div>
+				<!-- <button rv-on-click="scope.checkAnswer" rv-show="scope.selectedChoice">Submit</button> -->
+			</section>
+		</main>
+
+		<script src="jspm_packages/system.js"></script>
+		<script src="config.js"></script>
+		<script>
+		 System.config({
+			 "paths": {
+				 "*": "dist/*.js"
+			 }
+		 });
+	 </script>
+		<script>
+			System.import('main');
+		</script>
+	</body>
 </html>

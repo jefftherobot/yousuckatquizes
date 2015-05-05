@@ -1,7 +1,16 @@
 class Question {
+	constructor(args){
+		this.question = args.question;
+		this.choices = args.choices;
+		this.correctAnswer = args.correctAnswer;
+	}
 
-	constructor (args) {
-		this.id = args.id;
+	getCorrectAnswer() {
+		return this.correctAnswer;
+	};
+
+	displayQuestion() {
+		console.log(this.question)
 	}
 }
 

@@ -10,7 +10,8 @@ class YouSuckAtQuizes {
 		this.quiz = new Quiz({title: 'You suck at quizes'});
 
 		//Bind quiz data to HTML
-		rivets.bind($('#quiz'), {quiz : this.quiz})
+		rivets.bind($('#quiz'), {scope : this.quiz})
 	}
 }
+
 new YouSuckAtQuizes();
