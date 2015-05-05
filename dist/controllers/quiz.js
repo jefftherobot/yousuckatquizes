@@ -1,22 +1,16 @@
-System.register(['jquery', 'rivets', '../services/questions', '../models/question'], function (_export) {
-	var $, rivets, QuestionsFactory, Question, Quiz;
+System.register(["../services/questions"], function (_export) {
+	var QuestionsFactory, Quiz;
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	return {
-		setters: [function (_jquery) {
-			$ = _jquery['default'];
-		}, function (_rivets) {
-			rivets = _rivets['default'];
-		}, function (_servicesQuestions) {
-			QuestionsFactory = _servicesQuestions['default'];
-		}, function (_modelsQuestion) {
-			Question = _modelsQuestion['default'];
+		setters: [function (_servicesQuestions) {
+			QuestionsFactory = _servicesQuestions["default"];
 		}],
 		execute: function () {
-			'use strict';
+			"use strict";
 
 			Quiz = (function () {
 				function Quiz(args) {
@@ -24,37 +18,51 @@ System.register(['jquery', 'rivets', '../services/questions', '../models/questio
 
 					this.title = args.title;
 					this.question;
-					this.selectedChoice;
 					this.message;
+					this.currentQuestionIndex = 0;
 
 					this.startQuiz();
 				}
 
 				_createClass(Quiz, [{
-					key: 'startQuiz',
+					key: "startQuiz",
 					value: function startQuiz() {
-						this.setQuestion(0);
+						this.setQuestion();
 					}
 				}, {
-					key: 'setQuestion',
-					value: function setQuestion(id) {
-						var questionData = QuestionsFactory.questions[id];
-						this.question = new Question({ question: questionData.question, choices: questionData.choices, correctAnswer: questionData.answer });
+					key: "setQuestion",
+					value: function setQuestion() {
+						var id = this.currentQuestionIndex;
+						this.question = QuestionsFactory.questions[id];
 					}
 				}, {
-					key: 'checkAnswer',
+					key: "checkAnswer",
 					value: function checkAnswer(event, s) {
 						var selectedChoice = s.scope.selectedChoice,
 						    question = s.scope.question;
 
-						s.scope.message = selectedChoice == question.correctAnswer ? 'you don\'t suck.' : 'you suck';
+						s.scope.message = selectedChoice == question.answer ? "you don't suck." : "you suck";
+
+						if (selectedChoice == question.answer) {
+							setTimeout(function () {
+								s.scope.selectedChoice = null;
+								s.scope.message = null;
+								s.scope.nextQuestion();
+							}, 3000);
+						}
+					}
+				}, {
+					key: "nextQuestion",
+					value: function nextQuestion() {
+						this.currentQuestionIndex++;
+						this.setQuestion();
 					}
 				}]);
 
 				return Quiz;
 			})();
 
-			_export('default', Quiz);
+			_export("default", Quiz);
 		}
 	};
 });
