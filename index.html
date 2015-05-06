@@ -11,12 +11,13 @@
 				<div class="quiz__question" rv-text="scope.question.question"></div>
 				<ul class="quiz__choices">
 					<li rv-each-choice="scope.question.choices" class="quiz__choices__item">
-						<input type="radio" name="choice" rv-checked="scope.selectedChoice" rv-value="index" rv-on-click="scope.checkAnswer"> <label rv-text="choice"></label>
+						<input type="radio" name="choice" rv-checked="scope.selectedChoice" rv-value="index" rv-enabled="scope.answerMode"> <label rv-text="choice"></label>
 					</li>
 				</ul>
 				<div rv-show="scope.selectedChoice"> You chose index {scope.selectedChoice}</div>
 				<div rv-text="scope.message"></div>
-				<!-- <button rv-on-click="scope.checkAnswer" rv-show="scope.selectedChoice">Submit</button> -->
+				<button rv-on-click="scope.checkAnswer" rv-show="scope.answerMode">Submit</button>
+				<!-- <button rv-on-click="scope.nextQuestion" rv-hide="scope.answerMode">Next</button> -->
 			</section>
 		</main>
 

@@ -1,4 +1,4 @@
-import QuestionsFactory from '../services/questions';
+import QuestionsService from '../services/questionsService';
 
 class Quiz {
 
@@ -6,6 +6,8 @@ class Quiz {
 		this.title = args.title;
 		this.question;
 		this.message;
+		this.answerMode = true;
+		this.selectedChoice;
 		this.currentQuestionIndex = 0;
 
 		this.startQuiz();
@@ -17,34 +19,36 @@ class Quiz {
 
 	setQuestion(){
 		var id = this.currentQuestionIndex;
-		this.question = QuestionsFactory.questions[id];
+		this.question = QuestionsService.questions[id];
 	}
 
 	checkAnswer(event, s){
-		console.log(s)
-		var selectedChoice = s.scope.selectedChoice,
-		    question = s.scope.question;
+		var _this = s.scope,
+		    selectedChoice = _this.selectedChoice,
+		    question = _this.question;
 
-		s.scope.message = (selectedChoice == question.answer) ? "you don't suck." : "you suck";
+		_this.answerMode = false;
 
-		if(selectedChoice == question.answer){
-			setTimeout(function(){
-				s.scope.nextQuestion();
-			},3000)
-		}
+		_this.message = (selectedChoice == question.answer) ? "you don't suck." : "you suck";
+
+		//TODO: Scoring
+
+		setTimeout(function(){
+			_this.nextQuestion();
+		},3000)
 	}
 
 	nextQuestion(){
 		this.reset();
-		this.currentQuestionIndex++;
+		this.currentQuestionIndex++; //Todo, end quiz after last question
 		this.setQuestion()
 	}
 
 	reset(){
+		this.answerMode=true;
 		this.selectedChoice=null;
 		this.message=null;
 	}
-
 }
 
 export default Quiz;

@@ -1,5 +1,5 @@
 System.register([], function (_export) {
-	var QuestionsFactory;
+	var QuestionsService;
 
 	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
@@ -8,8 +8,8 @@ System.register([], function (_export) {
 		execute: function () {
 			"use strict";
 
-			QuestionsFactory = function QuestionsFactory() {
-				_classCallCheck(this, QuestionsFactory);
+			QuestionsService = function QuestionsService() {
+				_classCallCheck(this, QuestionsService);
 
 				this.questions = [{
 					question: "Which is the largest country in the world by population?",
@@ -34,8 +34,8 @@ System.register([], function (_export) {
 				}];
 			};
 
-			_export("default", new QuestionsFactory());
+			_export("default", new QuestionsService());
 		}
 	};
 });
-//# sourceMappingURL=questions.js.map
+//# sourceMappingURL=questionsService.js.map

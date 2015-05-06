@@ -1,4 +1,4 @@
-class QuestionsFactory {
+class QuestionsService {
 	constructor () {
 		this.questions = [
 			{
@@ -30,4 +30,4 @@ class QuestionsFactory {
 	}
 }
 
-export default new QuestionsFactory();
+export default new QuestionsService();
