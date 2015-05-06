@@ -21,6 +21,7 @@ class Quiz {
 	}
 
 	checkAnswer(event, s){
+		console.log(s)
 		var selectedChoice = s.scope.selectedChoice,
 		    question = s.scope.question;
 
@@ -28,16 +29,20 @@ class Quiz {
 
 		if(selectedChoice == question.answer){
 			setTimeout(function(){
-				s.scope.selectedChoice=null;
-				s.scope.message=null;
 				s.scope.nextQuestion();
 			},3000)
 		}
 	}
 
 	nextQuestion(){
+		this.reset();
 		this.currentQuestionIndex++;
 		this.setQuestion()
+	}
+
+	reset(){
+		this.selectedChoice=null;
+		this.message=null;
 	}
 
 }

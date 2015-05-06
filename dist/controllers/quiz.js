@@ -38,6 +38,7 @@ System.register(["../services/questions"], function (_export) {
 				}, {
 					key: "checkAnswer",
 					value: function checkAnswer(event, s) {
+						console.log(s);
 						var selectedChoice = s.scope.selectedChoice,
 						    question = s.scope.question;
 
@@ -45,8 +46,6 @@ System.register(["../services/questions"], function (_export) {
 
 						if (selectedChoice == question.answer) {
 							setTimeout(function () {
-								s.scope.selectedChoice = null;
-								s.scope.message = null;
 								s.scope.nextQuestion();
 							}, 3000);
 						}
@@ -54,8 +53,15 @@ System.register(["../services/questions"], function (_export) {
 				}, {
 					key: "nextQuestion",
 					value: function nextQuestion() {
+						this.reset();
 						this.currentQuestionIndex++;
 						this.setQuestion();
+					}
+				}, {
+					key: "reset",
+					value: function reset() {
+						this.selectedChoice = null;
+						this.message = null;
 					}
 				}]);
 

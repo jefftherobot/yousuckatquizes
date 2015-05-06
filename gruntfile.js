@@ -19,11 +19,7 @@ module.exports = function(grunt) {
 			options: {
 				sourceMap: true,
 				modules: 'system',
-				stage:2,
-				optional: [
-					"es7.decorators",
-					"es7.classProperties"
-				]
+				stage:2
 			},
 			dist: {
 				files: [{
